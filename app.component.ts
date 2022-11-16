@@ -39,6 +39,7 @@ import {
   ],
 })
 export class AppComponent {
+  public enadocUseree: any;
   public service: string =
     'https://ej2services.syncfusion.com/production/web-services/api/pdfviewer';
   public document: string = 'PDF_Succinctly.pdf';
@@ -93,5 +94,65 @@ export class AppComponent {
     viewer.textFieldSettings = textSettings;
 
     viewer.formDesignerModule.setFormFieldMode('Textbox');
+  }
+
+  importFormFields() {
+    var viewer = (<any>document.getElementById('pdfViewer')).ej2_instances[0];
+    console.log(viewer.formFieldCollections);
+    let sasasas = viewer.formFieldCollections[0];
+    viewer.exportFormFieldsAsObject().then(function (value) {
+      console.log(value);
+    });
+  }
+  addFormFieldSValue() {
+    var viewer = (<any>document.getElementById('pdfViewer')).ej2_instances[0];
+    let json = [
+      {
+        name: 'Text1',
+        tooltip: 'Type Here',
+        backgroundColor: 'red',
+        alignment: 'Left',
+        color: 'black',
+        thickness: 3,
+        borderColor: 'red',
+        isReadOnly: false,
+        bounds: { X: 0, Y: 0, Width: 100, Height: 100 },
+        value: 'kasyn',
+        pageNumber: 1,
+        fontSize: '12px',
+      },
+      {
+        name: 'Text2',
+        tooltip: 'Type Here',
+        backgroundColor: 'blue',
+        alignment: 'Left',
+        color: 'black',
+        thickness: 3,
+        borderColor: 'blue',
+        isReadOnly: false,
+        bounds: { X: 100, Y: 100, Width: 100, Height: 100 },
+        value: 'bimal',
+        pageNumber: 1,
+        fontSize: '12px',
+      },
+      {
+        name: 'Text3',
+        tooltip: 'Type Here',
+        backgroundColor: 'green',
+        alignment: 'Left',
+        color: 'black',
+        thickness: 3,
+        borderColor: 'green',
+        isReadOnly: false,
+        bounds: { X: 300, Y: 300, Width: 100, Height: 100 },
+        value: 'Lakshitha',
+        pageNumber: 1,
+        fontSize: '12px',
+      },
+    ];
+
+    json.forEach((x) => {
+      viewer.formDesignerModule.addFormField('Textbox', x);
+    });
   }
 }
