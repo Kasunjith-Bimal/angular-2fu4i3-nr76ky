@@ -161,7 +161,7 @@ export class AppComponent {
         fontSize: '12px',
       },
     ];
-    localStorage.set('KEYToken', json);
+    localStorage.setItem('KEYToken', JSON.stringify(json));
   }
 
   loadLoacalStorageValue() {
