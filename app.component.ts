@@ -99,7 +99,6 @@ export class AppComponent {
   deleteFormFileds() {
     var viewer = (<any>document.getElementById('pdfViewer')).ej2_instances[0];
     var formFileds = viewer.formFieldCollections;
-    var list2: any[] = [];
 
     if (formFileds.length != 0) {
       formFileds.forEach((element) => {
@@ -116,6 +115,64 @@ export class AppComponent {
       console.log(value);
     });
   }
+
+  setLocalStoirage() {
+    let json = [
+      {
+        name: 'Text1',
+        tooltip: 'Type Here',
+        backgroundColor: 'red',
+        alignment: 'Left',
+        color: 'black',
+        thickness: 3,
+        borderColor: 'red',
+        isReadOnly: false,
+        bounds: { X: 0, Y: 0, Width: 100, Height: 100 },
+        value: 'kasyn',
+        pageNumber: 1,
+        fontSize: '12px',
+      },
+      {
+        name: 'Text2',
+        tooltip: 'Type Here',
+        backgroundColor: 'blue',
+        alignment: 'Left',
+        color: 'black',
+        thickness: 3,
+        borderColor: 'blue',
+        isReadOnly: false,
+        bounds: { X: 100, Y: 100, Width: 100, Height: 100 },
+        value: 'bimal',
+        pageNumber: 1,
+        fontSize: '12px',
+      },
+      {
+        name: 'Text3',
+        tooltip: 'Type Here',
+        backgroundColor: 'green',
+        alignment: 'Left',
+        color: 'black',
+        thickness: 3,
+        borderColor: 'green',
+        isReadOnly: false,
+        bounds: { X: 300, Y: 300, Width: 100, Height: 100 },
+        value: 'Lakshitha',
+        pageNumber: 1,
+        fontSize: '12px',
+      },
+    ];
+    localStorage.set('KEYToken', json);
+  }
+
+  loadLoacalStorageValue() {
+    var viewer = (<any>document.getElementById('pdfViewer')).ej2_instances[0];
+    var json = JSON.parse(localStorage.getItem('KEYToken'));
+
+    json.forEach((x) => {
+      viewer.formDesignerModule.addFormField('Textbox', x);
+    });
+  }
+
   addFormFieldSValue() {
     var viewer = (<any>document.getElementById('pdfViewer')).ej2_instances[0];
     let json = [
