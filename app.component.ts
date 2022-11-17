@@ -96,6 +96,18 @@ export class AppComponent {
     viewer.formDesignerModule.setFormFieldMode('Textbox');
   }
 
+  deleteFormFileds() {
+    var viewer = (<any>document.getElementById('pdfViewer')).ej2_instances[0];
+    var formFileds = viewer.formFieldCollections;
+    var list2: any[] = [];
+
+    if (formFileds.length != 0) {
+      formFileds.forEach((element) => {
+        viewer.formDesignerModule.deleteFormField(element);
+      });
+    }
+  }
+
   importFormFields() {
     var viewer = (<any>document.getElementById('pdfViewer')).ej2_instances[0];
     console.log(viewer.formFieldCollections);
