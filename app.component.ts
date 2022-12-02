@@ -67,14 +67,12 @@ export class AppComponent {
   specificChange() {
     var viewer = (<any>document.getElementById('pdfViewer')).ej2_instances[0];
     for (let i = 0; i < viewer.annotationCollection.length; i++) {
-      if (viewer.annotationCollection[i].notes == 'Yes') {
-        viewer.annotationCollection[i].fillColor = 'black';
-        viewer.annotationCollection[i].fontColor = 'gold';
-        viewer.annotationCollection[i].fontSize = 20;
-        viewer.annotationCollection[i].strokeColor = 'green';
-        viewer.annotationCollection[i].thickness = 5;
-        viewer.annotation.editAnnotation(viewer.annotationCollection[i]);
-      }
+      viewer.annotationCollection[i].fillColor = 'black';
+      viewer.annotationCollection[i].fontColor = 'gold';
+      viewer.annotationCollection[i].fontSize = 72;
+      viewer.annotationCollection[i].strokeColor = 'green';
+      viewer.annotationCollection[i].thickness = 5;
+      viewer.annotation.editAnnotation(viewer.annotationCollection[i]);
     }
   }
 
